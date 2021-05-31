@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hcl.beans.Employee;
-import com.hcl.beans.Project;
+
 import com.hcl.exception.UserDefinedException;
 import com.hcl.repository.EmployeeDAO;
-import com.hcl.repository.ProjectDAO;
+
 
 
 
@@ -21,8 +21,7 @@ public class ServicesEmployeeImpl implements IEmployeeServices{
 	
 @Autowired
 private EmployeeDAO dao;
-@Autowired
-private ProjectDAO dao1;
+
 
 
 public Employee addEmployee(Employee emp) throws UserDefinedException {
@@ -68,10 +67,7 @@ public Employee addEmployee(Employee emp) throws UserDefinedException {
 			throw new UserDefinedException("not exist");
 	}
 
-	public List<Project> displayProject() {
-		// TODO Auto-generated method stub
-		return dao1.findAll();
-	}
+	
 
 	
 }

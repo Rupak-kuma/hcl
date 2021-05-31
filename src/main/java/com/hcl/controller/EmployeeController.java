@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hcl.beans.Employee;
-import com.hcl.beans.Project;
+
 import com.hcl.exception.UserDefinedException;
 import com.hcl.services.IEmployeeServices;
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/employees")
+
 public class EmployeeController {
 
 	
@@ -32,41 +32,36 @@ public class EmployeeController {
 	
 	
 
-	@GetMapping("/getEmployee")
+	@GetMapping("/employees")
 	public ResponseEntity<List<Employee>> displayEmployee() {
 		//List<Employee> list = service.displayEmployee();
 			
 		return new ResponseEntity<List<Employee>>(service.displayEmployee(),HttpStatus.OK);
 	}
-	@GetMapping("/getProject")
-	public ResponseEntity<List<Project>> displayProject() {
-		//List<Employee> list = service.displayEmployee();
-			
-		return new ResponseEntity<List<Project>>(service.displayProject(),HttpStatus.OK);
-	}
+	
 
 
-		@PostMapping("/addEmployee")
+		@PostMapping("/employees")
 		public ResponseEntity<Employee> addEmployee(@RequestBody Employee emp) throws UserDefinedException, SQLException {
 			return new ResponseEntity<Employee>(service.addEmployee(emp),HttpStatus.OK);
 			
 			
 		
 	}
-		@GetMapping("/searchEmployee/{id}")
+		@GetMapping("/employees/{id}")
 		public ResponseEntity<Employee>  searchEmployee(@PathVariable int id) throws UserDefinedException{
 			//List<Employee> l = new ArrayList<Employee>();
 			return new ResponseEntity<Employee>(service.searchById(id),HttpStatus.OK);
 		
 			
 		}
-		@PutMapping("/updateEmployee/{id}")
+		@PutMapping("/employees/{id}")
 		public ResponseEntity<Employee> updateEmployee(@PathVariable int id, @RequestBody Employee e) throws UserDefinedException, SQLException  {
 			return new ResponseEntity<Employee>(service.updateEmployee(id,e),HttpStatus.OK);
 		}
 		
 		
-		@DeleteMapping("/delete/{id}")
+		@DeleteMapping("/employees/{id}")
 		public ResponseEntity<Boolean> deleteEmployee(@PathVariable int id) throws UserDefinedException, SQLException {
 			return new ResponseEntity<Boolean>(service.deleteEmployee(id),HttpStatus.OK);
 	}
